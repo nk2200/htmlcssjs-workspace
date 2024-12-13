@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let taskId;
+        function start1(){
+            let num =0;
+            taskId = window.setInterval(()=> {
+                console.log("작업1: "+num++);
+            }, 1000); //1초 마다 반복실행(1000분의1초)
+            
+        }
+        function start2(){
+            let num =0;
+            taskId = window.setInterval(()=> {
+                num = num + 100;
+                console.log("작업2: "+num);
+            }, 1000);
+            
+        }
+
+        function stop(){
+            window.clearInterval(taskId); //매개값으로 setInterval의 리턴값
+        }
+    </script>
+</head>
+<body>
+    <button onclick="start1()">작업1 반복 시작</button>
+    <button onclick="start2()">작업2 반복 시작</button>
+    <button onclick="stop()">모든 작업 중지</button>
+</body>
+</html>

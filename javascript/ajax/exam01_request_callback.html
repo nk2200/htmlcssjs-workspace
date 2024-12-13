@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        function func1(){
+            $.ajax({
+                //상대경로 - 부모경로는 다 똑같고 파일명만 다름
+                url:"exam01_response.html",
+                method:"GET",
+                success:function(data){
+                    $("#content").html(data);
+                },
+                error:function(err){
+                    console.log(err);
+                }
+            });
+        }
+
+        function func2(){
+            $.ajax({
+                url:"exam01_response.html",
+                method:"GET"
+            })
+            .done((data)=>{$("#content").html(data);})
+            .fail((err)=>{})
+            .always(()=>{console.log("마무리 작업")});
+        }
+    </script>
+</head>
+<body>
+    <button onclick="func1()">Ajax Request</button>
+    <button onclick="func2()">Ajax Request</button>
+    <hr/>
+    <div id="content">
+
+    </div>
+</body>
+</html>

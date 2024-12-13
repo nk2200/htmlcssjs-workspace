@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let board = {
+            title : "Today is Tuesday",
+            content : "Today we are learing javascript. Im fucking happy.",
+            writer : "Tom"
+        };
+
+        // board.title="xxx";
+        // board = {}; //이거 안됨.
+
+        var title = board.title;
+        var {title} = board; //board객체의 title만 뽑아서 title이란 이름의 변수로 따로 저장한다.
+        console.log(title);
+
+        var{title,writer} = board; //둘다 변수로 저장
+        console.log(writer);
+        //board 객체 안의 title,writer 속성만 매개변수로 쓴다.
+        function func1({title,writer}){
+            console.log("title: "+title);
+            console.log("writer: "+writer);
+        }
+        func1(board);
+    </script>
+    <script>
+        const member = {
+            mid: "summer",
+            name: "한여름",
+            age:25
+        };
+
+        var {mid, ...rest} = member;
+        console.log("mid:",mid);
+        console.log("rest: ",rest);
+    </script>
+    <script>
+        function changeState(board){
+            //React나 Vue에서 상태 객체를 변경할 때 속성만 추가 변경할 수 없다.
+            // board.bno = 1;
+            // return board;
+            
+            //React나 Vue에서 상태 객체를 변경할 때는 새로운 객체를 생성해서 변경
+            return {bno:1,title:board.title,content:board.content,writer:board.writer};
+            return {...board, bno:1};
+        }
+        const changeState2 = (board) => ({...board, bno:1});
+
+        board = {
+            title : "Today is Tuesday",
+            content : "Today we are learing javascript. Im fucking happy.",
+            writer : "Tom"
+        };
+        const newBoard = addBno(board);
+        console.log(newBoard);
+    </script>
+</body>
+</html>

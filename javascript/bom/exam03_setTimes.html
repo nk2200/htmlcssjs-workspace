@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let taskId;
+        function alarmSetup(){
+            taskId = window.setTimeout(()=>{
+                console.log("Wake up!!!");
+            },10000);
+        }
+        function alarmCancel(){
+            window.clearTimeout(taskId); //setTimeout에서 설정한 것이 일어나기 전에 실행되면 돌아감! 그 후엔 의미X
+        }
+    </script>
+</head>
+<body>
+    <button onclick="alarmSetup()">알람설정</button>
+    <button onclick="alarmCancel()">알람취소</button>
+</body>
+</html>

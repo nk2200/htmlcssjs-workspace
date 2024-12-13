@@ -1,0 +1,23 @@
+{
+    "pageNo": 1,
+    "images": [
+        {
+            "id": "img1",
+            "src": "/common/images/photo/photo12.jpg",
+            "width": 100,
+            "height": 100
+        },
+        {
+            "id": "img2",
+            "src": "/common/images/photo/photo6.jpg",
+            "width": 100,
+            "height": 100
+        },
+        {
+            "id": "img3",
+            "src": "/common/images/photo/photo3.jpg",
+            "width": 100,
+            "height": 100
+        }
+    ]
+}

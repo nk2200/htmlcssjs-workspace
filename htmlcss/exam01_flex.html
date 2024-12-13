@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        /* * {
+            margin : 0px;
+            padding: 0px;
+        } */
+        div {
+            border: 1px solid black;
+            width: 100%;
+        }
+        .wrapper {
+            height: 400px;
+            display: flex; 
+            /* 이 class요소 안에 flex하게 배치 */
+            flex-direction: column;
+        }
+        #div1 {
+            flex-grow: 1;
+            
+        }
+        #div2 {
+            width: 500px;
+            height: 100px;
+            
+        }
+        #div3 {
+            width: 100px;
+            height: 100px;
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+    <h4>FlexBox를 이용한 레이아웃 구성</h4>
+    <hr>
+    <div class="wrapper">
+        <div id="div1">div1</div>
+        <!-- <img src="/common/image/photo/photo1.jpg" width="100px" height="100px">
+        <img src="/common/image/photo/photo2.jpg" width="100px" height="100px">
+        <img src="/common/image/photo/photo3.jpg" width="100px" height="100px"> -->
+        <div id="div2">div2</div>
+        <!-- <span style="width: 100px;">a</span>
+        <span style="width: 100px;">b</span>
+        <span style="width: 100px;">c</span> -->
+        <div id="div3">div3</div>
+    </div>
+</body>
+</html>

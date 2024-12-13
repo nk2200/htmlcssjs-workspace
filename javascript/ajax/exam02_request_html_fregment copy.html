@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(()=>{
+            func1();
+        });
+        const func1 = () => {
+            $.ajax({
+                url:"exam02_response1.json",
+                success:function(data){
+                    $("#pageNo").text(data.pageNo);
+                    console.log(data.images);
+                    data.images.forEach(element => {
+                        var imgTag = "<img ";
+                        imgTag = imgTag + " src=" + element.src;
+                        imgTag = imgTag + " width=" + element.width;
+                        imgTag = imgTag + " height=" + element.height;
+                        imgTag = imgTag + " />";
+                        $("#imagesDiv").append(imgTag);
+                    });
+                }
+            });
+        }
+        const func2 = () => {
+            $.ajax({
+                url:"exam02_response2.json",
+                success:function(data){
+                    $("#pageNo").text(data.pageNo);
+                    console.log(data.images);
+                    data.images.forEach(element => {
+                        console.log(element);
+                        var imgTag = "<img ";
+                        imgTag = imgTag + " src=" + element.src;
+                        imgTag = imgTag + " width=" + element.width;
+                        imgTag = imgTag + " height=" + element.height;
+                        imgTag = imgTag + " />";
+                        $("#imagesDiv").append(imgTag);
+                    });
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <button onclick="func1()">Ajax Request</button>
+    <button onclick="func2()">Ajax Request</button>
+    <div id="content">
+        <p>Page no: <span id="pageNo"></span></p>
+        <div id="imagesDiv"></div>
+    </div>
+</body>
+</html>

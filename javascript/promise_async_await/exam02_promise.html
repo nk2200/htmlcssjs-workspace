@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        function task() {
+            return new Promise((resolve, reject) => {
+                //비동기 작업 처리(시간이 필요한 작업)
+                const result = false;
+                if (result) {
+                    resolve({ data: "응답내용" });
+                } else {
+                    reject({ errorCode: 10, message: "요청 데이터 부족" });
+                }
+            });
+        }
+
+        function work1() {
+            task().then(
+                (result) => {
+                    console.log("succeed!!");
+                    console.log(result);
+                    console.log(result.data);
+                },
+                (err) => {
+                    console.log("failed...");
+                    console.log(err);
+                    console.log(err.errorCode);
+                    console.log(err.message);
+                }
+            )
+        }
+        async function work2(params) {
+            try {
+                const result = await task(); //task가 끝날때까지 기다려라
+                console.log("succeed!!");
+                console.log(result);
+            } catch (err) {
+                console.log("failed...");
+                console.log(err.errorCode);
+                console.log(err.message);
+            }
+        }
+
+        function work4() {
+            console.log("A");
+            work3();
+            console.log("B");
+            //실행 순서 A B work3()임
+        }
+
+        function work5() {
+            console.log("A");
+            const work = async () => {
+                try {
+                    await task(); //task가 끝날때까지 기다려라
+                    console.log("succeed!!");
+                } catch (err) {
+                    console.log("failed...");
+                }
+            }
+            work();
+            console.log("B");
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="work1()">비동기 작업 처리</button>
+    <button onclick="work2()">비동기 작업 처리</button>
+    <!-- <button onclick="work3()">비동기 작업 처리</button>
+    <button onclick="work4()">비동기 작업 처리</button>
+    <button onclick="work5()">비동기 작업 처리</button> -->
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const car = {
+            //property (객체의 데이터)
+            name : "grandeur",
+            speed : 0,
+
+            //method(객체의 동작)
+            start : function(){
+                console.log(this.name+"starts the engine.");
+            },
+            //es6 문법
+            run(){
+                this.speed = 30;
+                console.log("run at "+this.speed+" speed");
+            },
+            setSpeed : function(v){
+                this.speed = v;
+                this.run();
+                console.log(this);
+            },
+            //아래 화살표 함수에서 this는 다른 의미(window객체를 가르킨다!)
+            //객체의 메소드 정의할때는 화살표함수 쓰지 마라!!
+            //이벤트 처리에 쓴다.
+            setName : (name) => {
+                this.name = name;
+                console.log(this);
+            }
+        };
+        console.log("car.name: "+car.name);
+        console.log("car.speed: "+car.speed);
+        car.start(); //name 값이 안들어감
+        //자신의 속성을 객체 내부에서 사용할때는 반드시 this 붙여야됨
+        car.setSpeed(100);
+        console.log(car.speed);
+        car.run();
+        car.setName("sonata");
+        console.log(car.name);
+
+        //속성 이름 바꾸기
+        var propertyName = "speed";
+        console.log("car[propertyName]: ",car[propertyName]);
+        var methodName = "setSpeed";
+        console.log(car[methodName]());
+    </script>
+    <script>
+        const obj1 = {mid:"user1",name:"tom",age:25};
+
+        var mid = "user1";
+        var name = "tom";
+        var age = 25;
+        const obj2 = {mid:mid, name:name, age:age};
+        const obj3 = {mid,name,age};
+        //속성이름과 변수네임이 같을 경우, 이렇게 해도됨
+        console.log(obj3.mid);
+        console.log(obj3.name);
+        console.log(obj3.age);
+    </script>
+</body>
+</html>

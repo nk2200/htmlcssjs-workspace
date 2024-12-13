@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function task() {
+            return new Promise((resolve, reject) => {
+                //비동기 작업 처리(시간이 필요한 작업)
+                const result = true;
+                if (result) {
+                    resolve();
+                } else {
+                    reject();
+                }
+            });
+        }
+        function work1() {
+            task() //promise객체가 리턴되는데 그것의 then,catch,finally를 차례로 호출하면서 그 객체에 담는 느낌 ++이런느낌
+                .then(() => { //성공적으로 비동기작업이 끝났을때(resolve가 실행됬을때)
+                    console.log("succeed!!");
+                })
+                .catch(() => { //비동기작업이 실패됬을때(reject가 실행됬을때)
+                    console.log("failed...");
+                })
+                .finally(() => { //어쨋거나 실행
+                    console.log("finally");
+                });
+        }
+        function work2() {
+            task().then(
+                () => {
+                    console.log("succeed!!");
+                },
+                () => {
+                    console.log("failed...");
+                }
+            )
+        }
+        async function work3(params) {
+            try {
+                await task(); //task가 끝날때까지 기다려라
+                console.log("succeed!!");
+            } catch (err) {
+                console.log("failed...");
+            }
+        }
+
+        function work4() {
+            console.log("A");
+            work3();
+            console.log("B");
+            //실행 순서 A B work3()임
+        }
+
+        function work5() {
+            console.log("A");
+            const work = async () => {
+                try {
+                    await task(); //task가 끝날때까지 기다려라
+                    console.log("succeed!!");
+                } catch (err) {
+                    console.log("failed...");
+                }
+            }
+            work();
+            console.log("B");
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="work1()">비동기 작업 처리</button>
+    <button onclick="work2()">비동기 작업 처리</button>
+    <button onclick="work3()">비동기 작업 처리</button>
+    <button onclick="work4()">비동기 작업 처리</button>
+    <button onclick="work5()">비동기 작업 처리</button>
+</body>
+
+</html>

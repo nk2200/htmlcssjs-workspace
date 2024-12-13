@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function func1(){
+            //객체 찾기
+            const imgCollection = document.getElementsByTagName("img"); //collection으로 리턴
+            console.log(imgCollection);
+            const img = imgCollection.item(0);
+            console.log(img);
+            //객체 속성(데이터 변경)
+            img.src = "/common/images/photo/photo3.jpg";
+            img.width ="200";
+            img.height ="200";
+        }
+        function func2(){
+            const img = document.getElementById("img1"); //element로 리턴
+            img.src = "/common/images/photo/photo4.jpg";
+        }
+        function func3(){
+            //객체 찾기
+            const imgCollection = document.getElementsByClassName("group1"); 
+            console.log(imgCollection);
+            const img = imgCollection.item(0);
+            console.log(img);
+            //객체 속성(데이터 변경)
+            img.src = "/common/images/photo/photo3.jpg";
+            img.width ="200";
+            img.height ="200";
+        }
+        function func4(){
+            const imgnodeList = document.querySelectorAll("img"); //nodeList으로 리턴
+            console.log(imgnodeList);
+            const img = imgnodeList.item(0);
+            img.src = "/common/images/photo/photo5.jpg";
+            img.width ="200";
+            img.height ="200";
+        }
+        function func5(){
+            const img = document.querySelector("#img1");
+            img.src = "/common/images/photo/photo6.jpg";
+        }
+        function func6(){
+            const imgnodeList = document.querySelectorAll(".group1");
+            console.log(imgnodeList);
+            const img = imgnodeList.item(0);
+            img.src = "/common/images/photo/photo7.jpg";
+            img.width ="200";
+            img.height ="200";
+        }
+    </script>
+</head>
+<body>
+    <button onclick="func1()">객체 찾기 및 데이터 변경1</button>
+    <button onclick="func2()">객체 찾기 및 데이터 변경2</button>
+    <button onclick="func3()">객체 찾기 및 데이터 변경3</button>
+    <button onclick="func4()">객체 찾기 및 데이터 변경4</button>
+    <button onclick="func5()">객체 찾기 및 데이터 변경5</button>
+    <button onclick="func6()">객체 찾기 및 데이터 변경6</button>
+    <hr/>
+    <img id="img1" class="group1" src="/common/images/photo/photo1.jpg" width="150px" height="150px"/>
+    <img id="img2" class="group1" src="/common/images/photo/photo2.jpg" width="150px" height="150px"/>
+    <img id="img2" class="group1" src="/common/images/photo/photo10.jpg" width="150px" height="150px"/>
+</body>
+</html>

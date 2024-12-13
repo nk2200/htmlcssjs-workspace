@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //정규 표현식 작성 방법
+        //시작: /^
+        //끝 : $/
+
+        //전화번호 유효성 검사
+        var tel = "010-1234-5678";
+        const pattern = /^(02|010)-\d{3,4}-\d{4}$/;
+        if(pattern.test(tel)){
+            console.log("collect");
+        }else{
+            console.log("check your phone number.")
+        }
+
+        var email = "user@naver.com";
+        const patternEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if(patternEmail.test(email)){
+            console.log("collect");
+        }else{
+            console.log("check yout email."); 
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

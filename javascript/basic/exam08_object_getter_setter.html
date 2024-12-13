@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const car = {
+            _name : "grandeur",
+            _price : 5000,
+            _speed : 100,
+            //setter 작성
+            set speed(speed){
+                this._speed = speed;
+            },
+            //getter 작성
+            get speed(){
+                return this._speed;
+            }
+        }
+
+        // car.speed(200);//이렇게 안하고
+        car.speed = 200;
+        // console.log(car.speed()); //이렇게 안하고
+        console.log(car.speed); 
+        
+    </script>
+</body>
+</html>

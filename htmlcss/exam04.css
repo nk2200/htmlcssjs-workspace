@@ -1,0 +1,32 @@
+/* * {
+            margin : 0px;
+            padding: 0px;
+        } */
+div {
+    border: 1px solid black;
+    width: 100%;
+}
+
+.wrapper {
+    height: 400px;
+    display: flex;
+    /* 이 class요소 안에 flex하게 배치 */
+    flex-direction: column;
+}
+
+#div1 {
+    flex-grow: 1;
+
+}
+
+#div2 {
+    width: 500px;
+    height: 100px;
+
+}
+
+#div3 {
+    width: 100px;
+    height: 100px;
+    flex-grow: 1;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //클래스(설계도) 선언
+        class Car{
+            //property 
+            //x
+            //Constructor
+            constructor(name="grandeur",price=5000){
+                //property 선언
+                this.name = name;
+                this.price = price;
+            }
+            //method
+            start(){
+                console.log(this.name+"starts the engine.");
+            }
+            setPrice(price){
+                this.price = price;
+            }
+        }
+
+        const myCar = new Car("Lamborghini",300);
+        const yourCar = new Car("proche");
+        const herCar = new Car();
+        console.log(herCar.name);
+        console.log(herCar.price);
+    </script>
+</body>
+</html>

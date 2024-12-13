@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function func1(){
+            window.console.log("로그인1");
+
+            console.group("group1");
+            console.log("inside group");
+            console.log("inside group");
+            console.groupEnd();
+            
+            console.group("group2");
+            console.log("inside group");
+            console.log("inside group");
+            console.groupEnd();
+
+            console.log("zzzdkjlskd");
+        }
+
+        function func2(){
+            window.location.href="https://www.naver.com/";
+        }
+        function func3(){
+            window.history.back();
+        }
+        function func4(){
+            window.history.forward();
+        }
+        function func5(){
+            window.alert("사용자에게 보여줄 메시지");
+        }
+        function func6(){
+            var result = confirm("이것을 선택한 것이 맞습니까?");
+            if(result){
+                console.log("확인을 클릭함");
+            }else{
+                console.log("취소를 클릭함");
+            }
+        }
+        function func7(){
+            var num = window.prompt("수량을 입력하세요",0);
+            console.log(num);
+            if(num==null){
+                console.log("취소를 클릭함");
+            }else{
+                console.log("입력된 내용: "+num);
+            }
+        }
+        function func8(){
+            var myWindow = window.open("https://www.w3schools.com/", "popup", "width=500,height=300");
+        }
+
+    </script>
+</head>
+<body>
+    <button onclick="func1()">로그 출력</button>
+    <button onclick="func2()">page redirection</button>
+    <hr/>
+    <button onclick="func3()">previous page</button>
+    <button onclick="func4()">next page</button>
+    <hr/>
+    <button onclick="func5()">메세지 다이얼로그(x)</button>
+    <button onclick="func6()">확인 다이얼로그(x)</button>
+    <button onclick="func7()">입력 다이얼로그(x)</button>
+    <hr/>
+    <button onclick="func8()">윈도우 팝업(x)</button>
+    
+</body>
+</html>

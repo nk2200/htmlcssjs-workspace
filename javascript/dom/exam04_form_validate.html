@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script>
+        function handleCheckData() {
+            //form의 action기능 취소
+            event.preventDefault();
+
+            //전체 유효성 검사의 결과
+            let resultCheckData = true;
+
+            console.log("handleCheckData");
+            //uid 유효성검사
+            var uidPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,10}$/;
+            var uid = document.querySelector("#uid").value;
+            if(uidPattern.test(uid)){
+                document.querySelector("#uid").classList.remove("bg-danger");
+            }else{
+                document.querySelector("#uid").classList.add("bg-danger");
+                resultCheckData = false;
+            }
+            //email 유효성 검사
+            var emailPattern = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+            var email = document.querySelector("#email").value;
+            if(emailPattern.test(email)){
+                document.querySelector("#email").classList.remove("bg-danger");
+            }else{
+                document.querySelector("#email").classList.add("bg-danger");
+                resultCheckData = false;
+            }
+
+            
+            //password 유효성 검사
+            var passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,10}$/;
+            var password = document.querySelector("#password").value;
+            if(passwordPattern.test(password)){
+                document.querySelector("#password").classList.remove("bg-danger");
+            }else{
+                document.querySelector("#password").classList.add("bg-danger");
+                resultCheckData = false;
+            }
+            //phone 유효성 검사
+            var phonePattern = /^010-\d{3,4}-\d{4}$/; 
+            var phone = document.querySelector("#phone").value;
+            var phonePatternTest = phonePattern.test(phone);
+            if(phonePatternTest) {
+                document.querySelector("#phone").classList.remove("bg-danger");
+            } else {
+                document.querySelector("#phone").classList.add("bg-danger");
+                resultCheckData = false;
+            }
+
+            //체크박스 데이터중 체크된 데이터만 배열로 만들기
+            var checkedHobby = document.querySelectorAll("input[name='hobby']:checked"); //
+            var checkedHobbyArray = [];
+            // for(let i=0;i<checkedHobby.length;i++){
+            //     checkedHobbyArray.push(checkedHobby.item(i).value);
+            // }
+            checkedHobby.forEach((checkbox) => {
+                checkedHobbyArray.push(checkbox.value);
+            })
+            console.log(checkedHobbyArray);
+
+            //form의 action기능 사용
+            // form.submit();
+            if(resultCheckData){
+                // const form = document.querySelector("#joinForm");
+                // form.submit();
+                
+                //입력된 데이터로 구정된 json생성
+                var formData = {
+                    uid,
+                    email,
+                    password,
+                    phone,
+                    city:document.querySelector("#city").value,
+                    hobby:checkedHobbyArray,
+                    job:document.querySelector("input[name='job']:checked").value //radio는 체크1개만 할 수 있으니까 selectorAll로 배열 안만들어도됨
+                }
+                console.log(formData);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form id="joinForm" name="joinForm" onsubmit="handleCheckData()" novalidate>
+        <div class="form-group">
+            <label for="uid">ID</label>
+            <input type="text" class="form-control" id="uid" name="uid" value="Abc123" />
+            <small id="uidHelp" class="form-text text-muted">알파벳 대소문자, 숫자를 혼용해서 6자 이상 10장 이하</small>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="Abc123@mycompany.com" />
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" value="Abc12345" />
+            <small id="passwordHelp" class="form-text text-muted">알파벳 대소문자, 숫자를 혼용해서 8자 이상 15장 이하</small>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text" class="form-control" id="phone" value="010-123-1234" />
+            <small id="phoneHelp" class="form-text text-muted">예) 010-123-1234, 010-1234-1234</small>
+        </div>
+
+        <div class="form-group">
+            <label for="city">City</label>
+            <select id="city" name="city" class="form-control">
+                <option value="seoul">서울</option>
+                <option value="pusan">부산</option>
+                <option selected value="jeju">제주</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="city">Hobby</label>
+            <div class="form-check">
+                <input type="checkbox" name="hobby" value="movie" checked />
+                <label> 영화 </label>
+                <input type="checkbox" name="hobby" value="trip" checked />
+                <label> 여행 </label>
+                <input type="checkbox" name="hobby" value="game" />
+                <label> 게임 </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="city">Job</label>
+            <div class="form-check">
+                <input type="radio" name="job" value="developer" />
+                <label> 개발자 </label>
+                <input type="radio" name="job" value="designer" checked />
+                <label> 디자이너 </label>
+                <input type="radio" name="job" value="manager" />
+                <label> 매니저 </label>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <!--1.-->
+            <input type="submit" class="btn btn-primary" value="Join" />
+            <!--2.-->
+            <button>Join</button>
+            <!--3.-->
+            <input type="image" src="/common/images/photo/photo1.jpg" width="50px" height="50px">
+
+            <input type="reset" class="btn btn-danger" value="Reset" />
+        </div>
+    </form>
+</body>
+
+</html>

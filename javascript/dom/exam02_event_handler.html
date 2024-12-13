@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.addEventListener("load",()=>{
+            console.log("load Event");
+        })
+    </script>
+    <script>
+        //1
+        function handler1() {
+            console.log("btn1 is clicked.");
+        }
+    </script>
+    <script>
+        //2
+        function init(){
+            const btn2 = document.querySelector("#btn2");
+            console.log(btn2);
+            btn2.onclick= () => {
+                console.log("btn2 is clicked.");
+            }
+            //3
+            const btn3 = document.querySelector("#btn3");
+            btn3.addEventListener("click",()=>{
+                console.log("btn3 is clicked.");
+            })
+        }
+    </script>
+</head>
+
+<body onload="init()">
+    <button id="btn1" onclick="handler1()">btn1</button>
+    <button id="btn2">btn2</button>
+    <button id="btn3">btn3</button>
+</body>
+
+</html>
